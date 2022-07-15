@@ -7,6 +7,6 @@ public class TestClass {
     @BeforeEach
     void setup() {
         Configuration.holdBrowserOpen = true;
-        open("http://localhost:9999");
+        open("http://localhost:8080"); //по этой ссылке смотерть приложение порт 8080!!
     }
 }

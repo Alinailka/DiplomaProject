@@ -10,3 +10,5 @@ public class TestClass {
         open("http://localhost:8080"); //по этой ссылке смотерть приложение порт 8080!!
     }
 }
+
+// spring.datasource.url=jdbc:postgresql://217.25.88.206:5432/base

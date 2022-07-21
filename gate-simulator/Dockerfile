@@ -1,6 +1,7 @@
 FROM node:8.16.2-alpine
 WORKDIR /opt/app
-COPY . .
+COPY package*.json ./
 RUN npm install
-CMD ["npm", "start"]
+COPY . .
 EXPOSE 9999
+CMD ["node", "server.js"]

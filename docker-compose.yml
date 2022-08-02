@@ -14,7 +14,7 @@ services:
     volumes:
       - ./data:/var/lib/postgres
     environment:
-      - POSTGRES_DB=base
+      - POSTGRES_DB=app
       - POSTGRES_USER=userMMM
       - POSTGRES_PASSWORD=123
 
@@ -29,5 +29,5 @@ services:
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=app
-      - MYSQL_USER=app
-      - MYSQL_PASSWORD=pass
+      - MYSQL_USER=userMMM
+      - MYSQL_PASSWORD=123

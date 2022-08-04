@@ -6,8 +6,10 @@ services:
     container_name: node
     ports:
       - '9999:9999'
+
   postgres:
     image: postgres:12-alpine
+    restart: always
     container_name: postgres
     ports:
       - '5432:5432'
@@ -15,11 +17,12 @@ services:
       - ./data:/var/lib/postgres
     environment:
       - POSTGRES_DB=app
-      - POSTGRES_USER=userMMM
-      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=pass
 
   mysql:
     image: mysql:latest
+    restart: always
     container_name: mysql
     command: --innodb_use_native_aio=0
     ports:
@@ -29,5 +32,5 @@ services:
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=app
-      - MYSQL_USER=userMMM
-      - MYSQL_PASSWORD=123
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=pass

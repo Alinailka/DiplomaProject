@@ -17,20 +17,20 @@ public class TestClass {
     @BeforeEach
     void setup() {
         Configuration.holdBrowserOpen = true;
-        open("http://localhost:8080");
+        open("http://185.119.57.64:8080/");
     }//по этой ссылке смотерть приложение порт 8080!!
 
     @Test
     @DisplayName("Купить с одобренной картой")
     void buyApprovedCard() {
-        $(byText("Купить")).click();
-        $(byText("Номер карты")).setValue(DataGenerator.getApprovedCard());
+        $x("//*[text()=\"Купить\"]").click();
+        $$(byText("Номер карты")).filter(visible).first().setValue("4444 4444 4444 4441");//DataGenerator.getApprovedCard());
         $(byText("Месяц")).setValue(DataGenerator.getMonth());
         $(byText("Год")).setValue(DataGenerator.getYear());
         $(byText("Владелец")).setValue(DataGenerator.getRandomName());
         $(byText("CVC/CVV")).setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(byText("Операция одобрена Банком")).should(Condition.visible);
+        $(byText("Операция одобрена Банком")).should(Condition.visible,Duration.ofSeconds(15));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class TestClass {
     @Test
     @DisplayName("Купить в кредит с одобренной картой")
     void buyOnCreditApprovedCard() {
-        $(byText("Купить в кредит")).click();
+        $x("//*[text()=\"Купить в кредит\"]").click();
         $(byText("Номер карты")).setValue(DataGenerator.getApprovedCard());
         $(byText("Месяц")).setValue(DataGenerator.getMonth());
         $(byText("Год")).setValue(DataGenerator.getYear());

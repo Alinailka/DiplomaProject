@@ -22,6 +22,7 @@ public class BoxTests {
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
     }
+
     @BeforeEach
     void setup() {
         Configuration.holdBrowserOpen = true;
@@ -37,7 +38,7 @@ public class BoxTests {
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -51,7 +52,7 @@ public class BoxTests {
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -65,8 +66,8 @@ public class BoxTests {
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
-        $(byText("Продолжиlatin alть")).click();
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
+        $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
 
@@ -79,7 +80,7 @@ public class BoxTests {
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -93,7 +94,7 @@ public class BoxTests {
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -107,23 +108,9 @@ public class BoxTests {
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
-    }
-
-    @Test
-    @DisplayName("Поле Номер карты заполнено 17 цифрами")
-    void cardNumberLong() {
-
-        $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567 7");
-        $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
-        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
-        $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
-        $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Банк отказал в проведении операции")).should(Condition.visible, Duration.ofSeconds(15));
     }
 
     @Test
@@ -131,11 +118,11 @@ public class BoxTests {
     void monthEmpty() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -145,11 +132,11 @@ public class BoxTests {
     void monthShort() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("1");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -159,11 +146,11 @@ public class BoxTests {
     void monthСyrillic() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("Месяц");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -173,11 +160,11 @@ public class BoxTests {
     void monthLatin() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("Month");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -187,11 +174,11 @@ public class BoxTests {
     void monthSymbols() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("%&$");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -201,11 +188,11 @@ public class BoxTests {
     void monthNotExist() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("13");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -215,59 +202,27 @@ public class BoxTests {
     void monthNull() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("00");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
     }
 
     @Test
-    @DisplayName("Поле Месяц заполнено 09")
+    @DisplayName("Поле Месяц заполнено валидным значением 09")
     void monthValid() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("09");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
-    }
-
-    @Test
-    @DisplayName("Поле Месяц заполнено числом меньше текущего месяца (год = текущему)")
-    void monthLast() {
-
-        $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
-        $("[placeholder=\"08\"]").setValue("08");
-        // генерация месяца текущий-1
-
-        $("[placeholder=\"22\"]").setValue("22");
-        // генерация текущего года
-
-        $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
-        $(byText("Продолжить")).click();
-        $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
-    }
-
-    @Test
-    @DisplayName("Поле Месяц заполнено более 2 цифр")
-    void monthLong() {
-
-        $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
-        $("[placeholder=\"08\"]").setValue("008");
-        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
-        $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
-        $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
 
     @Test
@@ -275,11 +230,11 @@ public class BoxTests {
     void yearEmpty() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("");
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -288,11 +243,11 @@ public class BoxTests {
     void yearShort() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("1");
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -302,11 +257,11 @@ public class BoxTests {
     void yearСyrillic() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("Год");
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -316,11 +271,11 @@ public class BoxTests {
     void yearLatin() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("Year");
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -330,11 +285,11 @@ public class BoxTests {
     void yearSymbols() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("%$&");
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -342,77 +297,70 @@ public class BoxTests {
     @Test
     @DisplayName("Поле Год < текущего года")
     void yearLast() {
-
+        String year = DataGenerator.generateYearMinus(1);
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
-        $("[placeholder=\"22\"]").setValue("21");
-        //генерация год-1
+        $("[placeholder=\"22\"]").setValue(year);
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Истек срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Истёк срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
     }
 
     @Test
     @DisplayName("Поле Год > текущего года")
     void yearValid() {
-
+        String year = DataGenerator.generateYearPlus(1);
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
-        $("[placeholder=\"22\"]").setValue("23");
-        //генерация год+1
+        $("[placeholder=\"22\"]").setValue(year);
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
     }
 
     @Test
-    @DisplayName("Поле Год = текущему году, месяц >= текущему")
+    @DisplayName("Поле Год = текущему году, месяц = текущему")
     void yearNowMonthValid() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
-        $("[placeholder=\"08\"]").setValue("09");
-        //генерация текущего месяца
-        $("[placeholder=\"22\"]").setValue("22");
-        //генерация текущего года
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
+        $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
+        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
     }
 
     @Test
+    @DisplayName("Поле Год = текущему году, месяц > текущего")
+    void yearNowMonthPlus() {
+        String month = DataGenerator.generateMonthPlus(1);
+        $x("//*[text()=\"Купить\"]").click();
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
+        $("[placeholder=\"08\"]").setValue(month);
+        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
+        $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
+        $(byText("Продолжить")).click();
+        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
+    }
+    @Test
     @DisplayName("Поле Год = текущему году, месяц < текущего")
     void yearNowMonthLast() {
-
+        String month = DataGenerator.generateMonthMinus(1);
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
-        $("[placeholder=\"08\"]").setValue("08");
-        //генерация текущего месяца -1
-        $("[placeholder=\"22\"]").setValue("22");
-        //генерация текущего года
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
+        $("[placeholder=\"08\"]").setValue(month);
+        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
-    }
-
-    @Test
-    @DisplayName("Поле Год заполнено более 2 цифр")
-    void yearLong() {
-
-        $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
-        $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
-        $("[placeholder=\"22\"]").setValue("236");
-        $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
-        $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
 
     @Test
@@ -420,11 +368,11 @@ public class BoxTests {
     void ownerСyrillic() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue("Василий Иванов");
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -434,11 +382,11 @@ public class BoxTests {
     void ownerLatin() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue("Vasiliy Ivanov");
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -448,11 +396,11 @@ public class BoxTests {
     void ownerSymbols() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue("&%$");
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -462,11 +410,11 @@ public class BoxTests {
     void ownerNumbers() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue("4444 5555");
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
@@ -476,7 +424,7 @@ public class BoxTests {
     void cvcShort() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
@@ -490,7 +438,7 @@ public class BoxTests {
     void cvcValid() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
@@ -500,25 +448,11 @@ public class BoxTests {
     }
 
     @Test
-    @DisplayName("Поле CVC заполнено 4 цифрами")
-    void cvcLong() {
-
-        $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
-        $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
-        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
-        $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("0111");
-        $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
-    }
-
-    @Test
     @DisplayName("Поле CVC заполнено кириллицей")
     void cvcСyrillic() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
@@ -532,7 +466,7 @@ public class BoxTests {
     void cvcLatin() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
@@ -546,7 +480,7 @@ public class BoxTests {
     void cvcSymbols() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());

@@ -30,29 +30,43 @@ public class DataGenerator {
     }
 
     public static String getApprovedCard() {
-        String cardApproved = "44444444444444441";
+        String cardApproved = "4444 4444 4444 4441";
         return cardApproved;
     }
 
     public static String getDeclinedCard() {
-        String cardDeclined = "44444444444444442";
+        String cardDeclined = "4444 4444 4444 4442";
         return cardDeclined;
     }
 
-    public static String getMonth() {
-        LocalDate localDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
-        String formattedString = localDate.format(formatter);
-        return formattedString;}
+    public static String getSomethingDeclinedCard() {
+        String cardSomethingDeclined = "4444 4444 4444 4443";
+        return cardSomethingDeclined;
+    }
 
+    public static String getMonth() {
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));}
+
+    public static String generateMonthPlus(int month) {
+        return LocalDate.now().plusMonths(month).format(DateTimeFormatter.ofPattern("MM"));
+    }
+
+    public static String generateMonthMinus(int month) {
+        return LocalDate.now().minusMonths(month).format(DateTimeFormatter.ofPattern("MM"));
+    }
     public static String getYear() {
-        LocalDate localDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy");
-        String formattedString = localDate.format(formatter);
-        return formattedString;}
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));}
+
+    public static String generateYearPlus(int year) {
+        return LocalDate.now().plusYears(year).format(DateTimeFormatter.ofPattern("yy"));
+    }
+
+    public static String generateYearMinus(int year) {
+        return LocalDate.now().minusYears(year).format(DateTimeFormatter.ofPattern("yy"));
+    }
 
     public static String getCVC() {
-        String cvc = faker.currency().code();
+        String cvc = faker.finance().creditCard().toLowerCase();
         return cvc;
     }
 }

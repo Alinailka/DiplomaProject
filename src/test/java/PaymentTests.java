@@ -32,11 +32,11 @@ public class PaymentTests {
     void buyApprovedCard() {
 
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4444 4444 4444 4441");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Операция одобрена Банком")).should(Condition.visible,Duration.ofSeconds(15));
     }
@@ -45,11 +45,24 @@ public class PaymentTests {
     @DisplayName("Отклоненная оплата картой")
     void buyDeclinedCard() {
         $x("//*[text()=\"Купить\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4444 4444 4444 4442");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
+        $(byText("Продолжить")).click();
+        $(withText("Ошибка! Банк отказал в проведении операции")).should(Condition.visible,Duration.ofSeconds(15));
+    }
+
+    @Test
+    @DisplayName("Отклоненная оплата любой картой")
+    void buySomethingDeclinedCard() {
+        $x("//*[text()=\"Купить\"]").click();
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getSomethingDeclinedCard());
+        $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
+        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
+        $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Ошибка! Банк отказал в проведении операции")).should(Condition.visible,Duration.ofSeconds(15));
     }
@@ -58,11 +71,11 @@ public class PaymentTests {
     @DisplayName("Успешное оформление кредита")
     void buyOnCreditApprovedCard() {
         $x("//*[text()=\"Купить в кредит\"]").click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4444 4444 4444 4441");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Операция одобрена Банком")).should(Condition.visible,Duration.ofSeconds(15));
     }
@@ -72,13 +85,25 @@ public class PaymentTests {
     @DisplayName("Оформление кредита отклонено")
     void buyOnCreditDeclinedCard() {
         $(byText("Купить в кредит")).click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4444 4444 4444 4442");
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getDeclinedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
-        $("[placeholder=\"999\"]").setValue("111");
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Ошибка! Банк отказал в проведении операции")).should(Condition.visible,Duration.ofSeconds(15));
     }
 
+    @Test
+    @DisplayName("Оформление кредита по любой карте отклонено")
+    void buyOnCreditSomethingDeclinedCard() {
+        $(byText("Купить в кредит")).click();
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getSomethingDeclinedCard());
+        $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
+        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
+        $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
+        $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
+        $(byText("Продолжить")).click();
+        $(withText("Ошибка! Банк отказал в проведении операции")).should(Condition.visible,Duration.ofSeconds(15));
+    }
 }

@@ -20,6 +20,7 @@ public class DataGenerator {
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
+
     private static final Faker faker = new Faker(new Locale("ru"));
 
     private DataGenerator() {
@@ -66,7 +67,6 @@ public class DataGenerator {
     }
 
     public static String getCVC() {
-        String cvc = faker.finance().creditCard().toLowerCase();
-        return cvc;
+        return faker.finance().creditCard().toLowerCase();
     }
 }

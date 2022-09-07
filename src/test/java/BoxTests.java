@@ -27,7 +27,7 @@ public class BoxTests {
     void setup() {
         Configuration.holdBrowserOpen = true;
         open("http://185.119.57.64:8080/");
-    }//по этой ссылке смотерть приложение порт 8080!!
+    }
 
     @Test
     @DisplayName("Поле Номер карты осталось пустым")
@@ -204,7 +204,7 @@ public class BoxTests {
         $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("00");
-        $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
+        $("[placeholder=\"22\"]").setValue(DataGenerator.generateYearPlus(1));
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
@@ -238,6 +238,7 @@ public class BoxTests {
         $(byText("Продолжить")).click();
         $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
     }
+
     @Test
     @DisplayName("Поле Год заполнен менее 2 цифр")
     void yearShort() {
@@ -297,11 +298,11 @@ public class BoxTests {
     @Test
     @DisplayName("Поле Год < текущего года")
     void yearLast() {
-        String year = DataGenerator.generateYearMinus(1);
+
         $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
-        $("[placeholder=\"22\"]").setValue(year);
+        $("[placeholder=\"22\"]").setValue(DataGenerator.generateYearMinus(1));
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
@@ -311,11 +312,11 @@ public class BoxTests {
     @Test
     @DisplayName("Поле Год > текущего года")
     void yearValid() {
-        String year = DataGenerator.generateYearPlus(1);
+        //  String year = DataGenerator.generateYearPlus(1);
         $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
-        $("[placeholder=\"22\"]").setValue(year);
+        $("[placeholder=\"22\"]").setValue(DataGenerator.generateYearPlus(1));
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
@@ -339,23 +340,24 @@ public class BoxTests {
     @Test
     @DisplayName("Поле Год = текущему году, месяц > текущего")
     void yearNowMonthPlus() {
-        String month = DataGenerator.generateMonthPlus(1);
+
         $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
-        $("[placeholder=\"08\"]").setValue(month);
+        $("[placeholder=\"08\"]").setValue(DataGenerator.generateMonthPlus(1));
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
         $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
     }
+
     @Test
     @DisplayName("Поле Год = текущему году, месяц < текущего")
     void yearNowMonthLast() {
-        String month = DataGenerator.generateMonthMinus(1);
+
         $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
-        $("[placeholder=\"08\"]").setValue(month);
+        $("[placeholder=\"08\"]").setValue(DataGenerator.generateMonthMinus(1));
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());

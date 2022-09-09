@@ -46,7 +46,8 @@ public class DataGenerator {
     }
 
     public static String getMonth() {
-        return LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));}
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));
+    }
 
     public static String generateMonthPlus(int month) {
         return LocalDate.now().plusMonths(month).format(DateTimeFormatter.ofPattern("MM"));
@@ -55,8 +56,10 @@ public class DataGenerator {
     public static String generateMonthMinus(int month) {
         return LocalDate.now().minusMonths(month).format(DateTimeFormatter.ofPattern("MM"));
     }
+
     public static String getYear() {
-        return LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));}
+        return LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
+    }
 
     public static String generateYearPlus(int year) {
         return LocalDate.now().plusYears(year).format(DateTimeFormatter.ofPattern("yy"));

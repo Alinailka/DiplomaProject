@@ -1,16 +1,14 @@
+package ru.netology.data;
+
 import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import lombok.Data;
-import lombok.Value;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-
-import static io.restassured.RestAssured.given;
 
 public class DataGenerator {
     private static final RequestSpecification requestSpec = new RequestSpecBuilder()
@@ -31,18 +29,15 @@ public class DataGenerator {
     }
 
     public static String getApprovedCard() {
-        String cardApproved = "4444 4444 4444 4441";
-        return cardApproved;
+        return "4444 4444 4444 4441";
     }
 
     public static String getDeclinedCard() {
-        String cardDeclined = "4444 4444 4444 4442";
-        return cardDeclined;
+        return "4444 4444 4444 4442";
     }
 
     public static String getSomethingDeclinedCard() {
-        String cardSomethingDeclined = "4444 4444 4444 4443";
-        return cardSomethingDeclined;
+        return "4444 4444 4444 4443";
     }
 
     public static String getMonth() {

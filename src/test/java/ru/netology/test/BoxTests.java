@@ -1,9 +1,11 @@
+package ru.netology.test;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.sun.xml.bind.v2.TODO;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import ru.netology.data.DataGenerator;
 
 import java.time.Duration;
 
@@ -33,7 +35,6 @@ public class BoxTests {
     @DisplayName("Поле Номер карты осталось пустым")
     void cardNumberEmpty() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue("");
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -47,7 +48,6 @@ public class BoxTests {
     @DisplayName("Поле Номер карты менее 16 цифр")
     void cardNumberShort() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4444 4444 4444 444");
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -61,7 +61,6 @@ public class BoxTests {
     @DisplayName("Поле Номер карты заполнено кириллицей")
     void cardNumberСyrillic() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue("Номер карты");
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -75,7 +74,6 @@ public class BoxTests {
     @DisplayName("Поле Номер карты заполнено латиницей")
     void cardNumberLatin() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue("Card number");
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -89,7 +87,6 @@ public class BoxTests {
     @DisplayName("Поле Номер карты заполнено спецсимволами")
     void cardNumberSymbols() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue("&$%");
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -103,7 +100,6 @@ public class BoxTests {
     @DisplayName("Поле Номер карты заполнено 16 цифрами")
     void cardNumberValid() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue("4567 4567 4567 4567");
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -117,7 +113,6 @@ public class BoxTests {
     @DisplayName("Поле Месяц осталось пустым")
     void monthEmpty() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -131,7 +126,6 @@ public class BoxTests {
     @DisplayName("Поле Месяц менее 2 цифр")
     void monthShort() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("1");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -145,7 +139,6 @@ public class BoxTests {
     @DisplayName("Поле Месяц заполнено кириллицей")
     void monthСyrillic() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("Месяц");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -159,7 +152,6 @@ public class BoxTests {
     @DisplayName("Поле Месяц заполнено латиницей")
     void monthLatin() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("Month");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -173,7 +165,6 @@ public class BoxTests {
     @DisplayName("Поле Месяц заполнено спецсимволами")
     void monthSymbols() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("%&$");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -187,7 +178,6 @@ public class BoxTests {
     @DisplayName("Поле Месяц >12 ")
     void monthNotExist() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("13");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -198,10 +188,9 @@ public class BoxTests {
     }
 
     @Test
-    @DisplayName("Поле Месяц <01 ")
+    @DisplayName("Поле Месяц <01")
     void monthNull() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("00");
         $("[placeholder=\"22\"]").setValue(DataGenerator.generateYearPlus(1));
@@ -215,7 +204,6 @@ public class BoxTests {
     @DisplayName("Поле Месяц заполнено валидным значением 09")
     void monthValid() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue("09");
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -229,7 +217,6 @@ public class BoxTests {
     @DisplayName("Поле Год осталось пустым")
     void yearEmpty() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("");
@@ -243,7 +230,6 @@ public class BoxTests {
     @DisplayName("Поле Год заполнен менее 2 цифр")
     void yearShort() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("1");
@@ -257,7 +243,6 @@ public class BoxTests {
     @DisplayName("Поле Год заполнено кириллицей")
     void yearСyrillic() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("Год");
@@ -271,7 +256,6 @@ public class BoxTests {
     @DisplayName("Поле Год заполнено латиницей")
     void yearLatin() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("Year");
@@ -285,7 +269,6 @@ public class BoxTests {
     @DisplayName("Поле Год заполнено спецсимволами")
     void yearSymbols() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue("%$&");
@@ -299,7 +282,6 @@ public class BoxTests {
     @DisplayName("Поле Год < текущего года")
     void yearLast() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.generateYearMinus(1));
@@ -312,8 +294,7 @@ public class BoxTests {
     @Test
     @DisplayName("Поле Год > текущего года")
     void yearValid() {
-        //  String year = DataGenerator.generateYearPlus(1);
-        $x("//*[text()=\"Купить\"]").click();
+
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.generateYearPlus(1));
@@ -327,7 +308,6 @@ public class BoxTests {
     @DisplayName("Поле Год = текущему году, месяц = текущему")
     void yearNowMonthValid() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -341,7 +321,6 @@ public class BoxTests {
     @DisplayName("Поле Год = текущему году, месяц > текущего")
     void yearNowMonthPlus() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.generateMonthPlus(1));
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -355,7 +334,6 @@ public class BoxTests {
     @DisplayName("Поле Год = текущему году, месяц < текущего")
     void yearNowMonthLast() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.generateMonthMinus(1));
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -369,7 +347,6 @@ public class BoxTests {
     @DisplayName("Поле Владелец заполнено кириллицей")
     void ownerСyrillic() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -383,7 +360,6 @@ public class BoxTests {
     @DisplayName("Поле Владелец заполнено латиницей")
     void ownerLatin() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -397,7 +373,6 @@ public class BoxTests {
     @DisplayName("Поле Владелец заполнено спецсимволами")
     void ownerSymbols() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -411,7 +386,6 @@ public class BoxTests {
     @DisplayName("Поле Владелец заполнено цифрами")
     void ownerNumbers() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -425,7 +399,6 @@ public class BoxTests {
     @DisplayName("Поле CVC заполнено менее 2 цифр")
     void cvcShort() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -439,7 +412,6 @@ public class BoxTests {
     @DisplayName("Поле CVC заполнено 3 цифрами")
     void cvcValid() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -453,7 +425,6 @@ public class BoxTests {
     @DisplayName("Поле CVC заполнено кириллицей")
     void cvcСyrillic() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -467,7 +438,6 @@ public class BoxTests {
     @DisplayName("Поле CVC заполнено латиницей")
     void cvcLatin() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -481,7 +451,6 @@ public class BoxTests {
     @DisplayName("Поле CVC заполнено спецсимволами")
     void cvcSymbols() {
 
-        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());

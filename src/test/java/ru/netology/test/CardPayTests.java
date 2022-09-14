@@ -1,17 +1,19 @@
+package ru.netology.test;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import ru.netology.data.DataGenerator;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
 
-public class CreditPayTests {
+public class CardPayTests {
 
     @BeforeAll
     static void setUpAll() {
@@ -30,9 +32,9 @@ public class CreditPayTests {
     }
 
     @Test
-    @DisplayName("Успешное оформление кредита")
-    void buyOnCreditApprovedCard() {
-        $x("//*[text()=\"Купить в кредит\"]").click();
+    @DisplayName("Успешная оплата картой")
+    void buyApprovedCard() {
+
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -43,10 +45,10 @@ public class CreditPayTests {
     }
 
     @Test
-    @DisplayName("Оформление кредита отклонено")
-    void buyOnCreditDeclinedCard() {
-        $(byText("Купить в кредит")).click();
-        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getDeclinedCard());
+    @DisplayName("Отклоненная оплата картой")
+    void buyDeclinedCard() {
+
+        $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
@@ -56,9 +58,9 @@ public class CreditPayTests {
     }
 
     @Test
-    @DisplayName("Оформление кредита по любой карте отклонено")
-    void buyOnCreditSomethingDeclinedCard() {
-        $(byText("Купить в кредит")).click();
+    @DisplayName("Отклоненная оплата любой картой")
+    void buySomethingDeclinedCard() {
+
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getSomethingDeclinedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());

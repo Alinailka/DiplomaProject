@@ -35,6 +35,7 @@ public class CardPayTests {
     @DisplayName("Успешная оплата картой")
     void buyApprovedCard() {
 
+        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -48,6 +49,7 @@ public class CardPayTests {
     @DisplayName("Отклоненная оплата картой")
     void buyDeclinedCard() {
 
+        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getApprovedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());
@@ -61,6 +63,7 @@ public class CardPayTests {
     @DisplayName("Отклоненная оплата любой картой")
     void buySomethingDeclinedCard() {
 
+        $x("//*[text()=\"Купить\"]").click();
         $("[placeholder=\"0000 0000 0000 0000\"]").setValue(DataGenerator.getSomethingDeclinedCard());
         $("[placeholder=\"08\"]").setValue(DataGenerator.getMonth());
         $("[placeholder=\"22\"]").setValue(DataGenerator.getYear());

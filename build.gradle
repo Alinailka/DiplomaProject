@@ -39,8 +39,4 @@ test {
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
 }
 
-//адрес – 185.119.57.64
-//логин/пароль - student/HTIPDN
-//docker-compose up -d --force-recreate
-//java -Dspring.datasource.url=jdbc:mysql://185.119.57.64:3306/app -jar artifacts/aqa-shop.jar
-//http://185.119.57.64:8080/
+

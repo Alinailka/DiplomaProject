@@ -28,7 +28,7 @@ public class CardPayTests {
     @BeforeEach
     void setup() {
         Configuration.holdBrowserOpen = true;
-        open("http://185.119.57.64:8080/");
+        open("http://185.119.57.126:8080/");
     }
 
     @Test

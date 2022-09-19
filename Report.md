@@ -8,20 +8,20 @@
 
 #### В результате тестирования был проведено 39 тестов, из которых 33 (84.6%) прошли успешно, а 6 (15.4%) упали. В процентном соотношении успешных/не успешных тестов по кейсам:
 
-![](C:/Users/User/Desktop/Allure/Allure2.jpg)
+![](https://drive.google.com/file/d/1_sMRz46dZ7IkBXvmtKTkLQdesvmXL-Z_/view?usp=sharing)
 
-![](C:/Users/User/Desktop/Allure/Allure3.jpg)
+![](https://drive.google.com/file/d/1MGOZmAAtIZ9xdIL_BF_hSO84IIgVwMZE/view?usp=sharing)
 
 1. Тест-кейс "Покупка тура с оплатой дебетовой картой"
 Проведено 3 теста. Успешно 2, не успешно 1 (66.6% / 33.3%).
 
-![](C:/Users/User/Desktop/Allure/Allure5.jpg)
+![](https://drive.google.com/file/d/1MFqDuiQM9UgQcWH085xllyl51r12-cYo/view?usp=sharing)
 
 Не прошел тест buyDeclinedCard ("Отклоненная оплата картой"): При попытке оплатить тур картой со статусом declined, ожидаем отказ от банка "Ошибка! Банк отказал в проведении операции", но фактически приходит одобрение "Успешно! Операция одобрена Банком".
 
 2. Тест-кейс "Покупка тура в кредит"
 
-![](C:/Users/User/Desktop/Allure/Allure6.jpg)
+![](https://drive.google.com/file/d/1htQAJf6gv1d_lUUKe-pjQyQZi6bnopXR/view?usp=sharing)
 
 Проведено 3 теста. Успешно 2, не успешно 1 (66.6% / 33.3%).
 
@@ -30,7 +30,7 @@
 3. Тест-кейс "Валидация полей"
 Проведено 33 теста. Успешно 29, не успешно 4 (87.8% / 12.2%).
 
-![](C:/Users/User/Desktop/Allure/Allure4.jpg)
+![](https://drive.google.com/file/d/1Mf9RQxY5_d7L3HTXmTtONV_D5-lVO3mv/view?usp=sharing)
 
 Не прошли следующие тесты:
 

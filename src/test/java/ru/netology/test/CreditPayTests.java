@@ -43,7 +43,7 @@ public class CreditPayTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class CreditPayTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Ошибка! Банк отказал в проведении операции")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Ошибка! Банк отказал в проведении операции")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -71,6 +71,6 @@ public class CreditPayTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Ошибка! Банк отказал в проведении операции")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Ошибка! Банк отказал в проведении операции")).should(Condition.visible, Duration.ofSeconds(30));
     }
 }

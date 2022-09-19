@@ -42,7 +42,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -98,7 +98,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -112,7 +112,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Банк отказал в проведении операции")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Банк отказал в проведении операции")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -126,7 +126,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -140,7 +140,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -154,7 +154,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -168,7 +168,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -182,7 +182,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -196,7 +196,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -210,7 +210,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -224,7 +224,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -238,7 +238,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -252,7 +252,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -266,7 +266,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -280,7 +280,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -294,7 +294,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -308,7 +308,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Истёк срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Истёк срок действия карты")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -322,7 +322,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -336,7 +336,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -350,7 +350,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -364,7 +364,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверно указан срок действия карты")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -378,7 +378,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue("Василий Иванов");
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -392,7 +392,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue("Vasiliy Ivanov");
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -406,7 +406,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue("&%$");
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -420,7 +420,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue("4444 5555");
         $("[placeholder=\"999\"]").setValue(DataGenerator.getCVC());
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -434,7 +434,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue("01");
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -448,7 +448,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue("011");
         $(byText("Продолжить")).click();
-        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Операция одобрена Банком")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -462,7 +462,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue("КОД");
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -476,7 +476,7 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue("CVC");
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 
     @Test
@@ -490,6 +490,6 @@ public class BoxTests {
         $x(("//span[contains(.,'Владелец')]/following-sibling::span/input")).setValue(DataGenerator.getRandomName());
         $("[placeholder=\"999\"]").setValue("&%$");
         $(byText("Продолжить")).click();
-        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(15));
+        $(withText("Неверный формат")).should(Condition.visible, Duration.ofSeconds(30));
     }
 }
